@@ -13,14 +13,16 @@ export default function MainBody() {
 
 
                 </div>
-                <div className="right pt-16">
+                    <div className="right pt-16">
                     <section id="projects" className="text-3xl">
 
                         {projectsData.map((project) => (
                             <ProjectCard
                                 key={project.id}
+                                gitLink={project.gitLink}
                                 language={project.language}
                                 title={project.title}
+                                demoLink={project.demoLink}
                                 description={project.description}
                             />
                         ))}
