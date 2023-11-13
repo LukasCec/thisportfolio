@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+    <script>
+      document.addEventListener("scroll", function() {
+        const sections = document.querySelectorAll("section");
+        const navbarLinks = document.querySelectorAll("#navbar div");
+        const navText = document.querySelectorAll("#navbar a");
+
+        sections.forEach(function(section, index) {
+          const rect = section.getBoundingClientRect();
+          if (rect.top <= 50 && rect.bottom >= 50) {
+            navbarLinks[index].classList.add("active");
+            navText[index].classList.add("active--hover");
+
+          } else {
+            navbarLinks[index].classList.remove("active");
+            navText[index].classList.remove("active--hover");
+          }
+        });
+      });
+
+      // Get all elements with the class name "nav-item"
+      const navItems = document.querySelectorAll('.nav-item');
+
+      // Get the element with the class name "nav--line"
+      const navLine = document.querySelector('.nav--line');
+
+      // Function to add active class on hover
+      function handleHover() {
+        navLine.classList.add('active');
+        navText.classList.add('active--hover');
+
+
+      }
+
+      // Function to remove active class when mouse leaves
+      function handleLeave() {
+        navLine.classList.remove('active');
+      }
+
+      // Attach event listeners to each nav item
+      navItems.forEach(navItem => {
+        navItem.addEventListener('mouseover', handleHover);
+        navItem.addEventListener('mouseout', handleLeave);
+      });
+
+    </script>
+  </body>
+</html>
